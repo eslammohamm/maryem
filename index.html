@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css">
+  <title>مريم محمد | لإدارة المهام اليومية</title>
+  <meta name="description" content="مساحة عمل يومية ذكية وبسيطة لتنظيم مهامك، تحديد أولوياتك، ومتابعة إنجازك لحظة بلحظة." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="brand">
+        <span class="brand-icon">م</span>
+        <span>
+          مريم محمد
+          <small>لإدارة المهام اليومية</small>
+        </span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#workspace">مساحة المهام</a></li>
+        <li><a href="#features">المميزات</a></li>
+        <li><a href="#how-it-works">طريقة العمل</a></li>
+        <li><a href="#contact">تواصل معنا</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#workspace" class="btn btn-primary btn-sm">ابدأ يومك الآن</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-badge">تنظيم ذكي • هدوء وتركيز طوال اليوم</div>
+        <h1>رتّب يومك بوضوح مع مساحة <span>مريم محمد</span> للمهام اليومية</h1>
+        <p>
+          صفحة عملية وخفيفة تجمع مهامك، أولوياتك، وقوالب يومك الجاهزة في مكان واحد مع حفظ تلقائي فوري على جهازك دون أي تعقيد.
+        </p>
+        <div class="hero-cta">
+          <a href="#workspace" class="btn btn-primary">إضافة مهمة جديدة</a>
+          <a href="#features" class="btn btn-outline">استكشف المميزات</a>
+        </div>
+        <div class="hero-meta">
+          <span>✓ حفظ تلقائي محلي</span>
+          <span>✓ قوالب يومية بضغطة زر</span>
+          <span>✓ متوافقة مع الموبايل والكمبيوتر</span>
+        </div>
+      </div>
+
+      <!-- Live Daily Summary Card -->
+      <aside class="summary-card">
+        <div class="summary-header">
+          <div>
+            <h3>ملخص إنجاز اليوم</h3>
+            <div class="summary-date" id="todayDate"></div>
+          </div>
+          <span class="live-dot">مباشر</span>
+        </div>
+
+        <div class="progress-row">
+          <div class="ring-wrapper">
+            <svg viewBox="0 0 100 100">
+              <circle class="ring-bg" cx="50" cy="50" r="42" />
+              <circle class="ring-fill" id="progressRing" cx="50" cy="50" r="42" stroke-dasharray="263.89" stroke-dashoffset="263.89" />
+            </svg>
+            <div class="ring-label">
+              <strong id="progressPercent">0%</strong>
+              <span>مكتمل</span>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-box">
+              <strong id="completedCount">0</strong>
+              <span>مهام مكتملة</span>
+            </div>
+            <div class="stat-box">
+              <strong id="remainingCount">0</strong>
+              <span>مهام متبقية</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="priority-spotlight">
+          <div class="spotlight-top">
+            <span>أهم مهمة حالياً</span>
+            <span id="spotlightMeta">—</span>
+          </div>
+          <div class="spotlight-title" id="spotlightTitle">لا توجد مهام متبقية، أحسنت!</div>
+          <button class="btn btn-primary btn-sm" id="completeSpotlightBtn" style="width: 100%;">
+            تحديد كمكتملة الآن
+          </button>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Interactive Workspace -->
+  <section id="workspace">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">مساحة العمل التفاعلية</span>
+        <h2>نظّم مهامك اليومية بسهولة</h2>
+        <p>أضف مهامك، حدّد الأولوية والوقت، أو ابدأ فوراً بأحد القوالب اليومية الجاهزة.</p>
+      </div>
+
+      <div class="workspace-card">
+        <!-- Quick Templates -->
+        <div class="templates-bar">
+          <span class="templates-label">قوالب جاهزة بضغطة زر:</span>
+          <div class="template-buttons">
+            <button type="button" class="template-btn" data-template="morning">☀️ روتين الصباح</button>
+            <button type="button" class="template-btn" data-template="work">💼 يوم عمل مركز</button>
+            <button type="button" class="template-btn" data-template="study">📚 المذاكرة والتطوير</button>
+          </div>
+        </div>
+
+        <!-- Add Task Form -->
+        <form class="task-form" id="taskForm">
+          <input type="text" id="taskTitle" class="input-control" placeholder="اكتب المهمة الجديدة هنا..." required />
+          <select id="taskCategory" class="input-control">
+            <option value="عمل">التصنيف: عمل</option>
+            <option value="شخصي">التصنيف: شخصي</option>
+            <option value="دراسة">التصنيف: دراسة</option>
+            <option value="صحة">التصنيف: صحة</option>
+          </select>
+          <select id="taskPriority" class="input-control">
+            <option value="high">أولوية: عالية</option>
+            <option value="medium" selected>أولوية: متوسطة</option>
+            <option value="low">أولوية: منخفضة</option>
+          </select>
+          <input type="time" id="taskTime" class="input-control" value="09:00" />
+          <button type="submit" class="btn btn-primary">إضافة</button>
+        </form>
+
+        <!-- Filters -->
+        <div class="filters-bar">
+          <div class="filter-pills" id="statusFilters">
+            <button type="button" class="pill active" data-status="all">الكل</button>
+            <button type="button" class="pill" data-status="active">قيد التنفيذ</button>
+            <button type="button" class="pill" data-status="completed">مكتملة</button>
+          </div>
+
+          <div class="filter-right">
+            <select id="categoryFilter" class="input-control" style="width: auto; padding: 8px 12px;">
+              <option value="all">كل التصنيفات</option>
+              <option value="عمل">عمل</option>
+              <option value="شخصي">شخصي</option>
+              <option value="دراسة">دراسة</option>
+              <option value="صحة">صحة</option>
+            </select>
+            <input type="search" id="searchInput" class="input-control search-input" style="padding: 8px 12px;" placeholder="ابحث في المهام..." />
+          </div>
+        </div>
+
+        <!-- Tasks Container -->
+        <div class="task-list" id="taskList"></div>
+
+        <!-- Workspace Footer -->
+        <div class="workspace-footer">
+          <span id="tasksSummaryText">إجمالي المهام: 0</span>
+          <button type="button" class="btn btn-outline btn-sm" id="clearCompletedBtn">حذف المهام المكتملة</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">لماذا هذه المساحة؟</span>
+        <h2>تصميم هادئ يساعدك على الإنجاز</h2>
+        <p>كل أداة هنا صُممت لتقليل التشتت ومنحك رؤية واضحة ليومك.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 7v5l3 2" />
+            </svg>
+          </div>
+          <h3>متابعة لحظية للإنجاز</h3>
+          <p>مؤشر دائري يتحدث فوراً مع كل مهمة تنجزها، مع إبراز أهم أولوية متبقية أمامك دائماً.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
+              <polyline points="17 21 17 13 7 13 7 21" />
+              <polyline points="7 3 7 8 15 8" />
+            </svg>
+          </div>
+          <h3>حفظ تلقائي بدون تسجيل</h3>
+          <p>تُحفظ جميع مهامك تلقائياً في المتصفح حتى عند إغلاق الصفحة والعودة إليها لاحقاً.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9 12 2" />
+            </svg>
+          </div>
+          <h3>قوالب جاهزة وتراجع آمن</h3>
+          <p>ابدأ يومك بقوالب عملية جاهزة، مع إمكانية التراجع الفوري عند حذف أي مهمة بالخطأ.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how-it-works" class="steps-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">خطوات بسيطة</span>
+        <h2>كيف تبدأ تنظيم يومك في 3 خطوات؟</h2>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h3>أفرغ ذهنك في القائمة</h3>
+          <p>اكتب كل ما تحتاج لإنجازه اليوم أو اختر أحد القوالب الجاهزة كبداية سريعة.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h3>رتّب الأولويات والأوقات</h3>
+          <p>حدد المهام ذات الأولوية العالية والوقت المناسب لها لتظهر مباشرة في بطاقة التركيز.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h3>أنجز وتابع تقدمك</h3>
+          <p>ضع علامة الإنجاز على كل مهمة وشاهد نسبة تقدمك اليومي ترتفع خطوة بخطوة.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Newsletter -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-box">
+        <div>
+          <h2>تواصل مع مريم محمد أو اشترك في نصائح التنظيم الأسبوعية</h2>
+          <p>
+            هل لديك اقتراح لميزة جديدة أو ترغب في تلقي قوالب مجانية لتنظيم الوقت؟ اترك رسالتك أو بريدك الإلكتروني وسنتواصل معك.
+          </p>
+        </div>
+
+        <form class="contact-form" id="contactForm">
+          <input type="text" id="contactName" placeholder="الاسم الكامل" required />
+          <input type="email" id="contactEmail" placeholder="البريد الإلكتروني" required />
+          <textarea id="contactMsg" rows="3" placeholder="رسالتك أو اقتراحك (اختياري)"></textarea>
+          <button type="submit" class="btn btn-primary">إرسال الآن</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-inner">
+      <div class="brand">
+        <span class="brand-icon" style="width: 36px; height: 36px; font-size: 0.95rem;">م</span>
+        <span>مريم محمد | لإدارة المهام اليومية</span>
+      </div>
+      <div class="footer-copy">© <span id="year"></span> جميع الحقوق محفوظة — مريم محمد</div>
+    </div>
+  </footer>
+
+  <!-- Edit Task Modal -->
+  <div class="modal-backdrop" id="editModal">
+    <div class="modal">
+      <h3>تعديل المهمة</h3>
+      <form id="editForm">
+        <input type="hidden" id="editId" />
+        <div class="modal-fields">
+          <input type="text" id="editTitle" class="input-control" required />
+          <select id="editCategory" class="input-control">
+            <option value="عمل">عمل</option>
+            <option value="شخصي">شخصي</option>
+            <option value="دراسة">دراسة</option>
+            <option value="صحة">صحة</option>
+          </select>
+          <select id="editPriority" class="input-control">
+            <option value="high">أولوية عالية</option>
+            <option value="medium">أولوية متوسطة</option>
+            <option value="low">أولوية منخفضة</option>
+          </select>
+          <input type="time" id="editTime" class="input-control" />
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-outline btn-sm" id="closeModalBtn">إلغاء</button>
+          <button type="submit" class="btn btn-primary btn-sm">حفظ التعديلات</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <span id="toastMessage">تمت العملية بنجاح</span>
+    <button type="button" class="toast-undo" id="undoBtn" style="display: none;">تراجع</button>
+  </div>
+  <script src="main.js"></script>
+
+ 
+</body>
+</html>
